@@ -24,7 +24,7 @@ where
                     .pop()
                     .ok_or(format!("1 operand is needed before '{word}'"))?;
                 let result = operand1 + operand2;
-                println!("\t{operand1} {word} {operand2} = {result}");
+                println!("{operand1} {word} {operand2} = {result}");
                 stack.push(result);
             }
             "-" => {
@@ -35,7 +35,7 @@ where
                     .pop()
                     .ok_or(format!("1 operand is needed before '{word}'"))?;
                 let result = operand1 - operand2;
-                println!("\t{operand1} {word} {operand2} = {result}");
+                println!("{operand1} {word} {operand2} = {result}");
                 stack.push(result);
             }
             "*" => {
@@ -46,7 +46,7 @@ where
                     .pop()
                     .ok_or(format!("1 operand is needed before '{word}'"))?;
                 let result = operand1 * operand2;
-                println!("\t{operand1} {word} {operand2} = {result}");
+                println!("{operand1} {word} {operand2} = {result}");
                 stack.push(result);
             }
             "/" => {
@@ -57,7 +57,7 @@ where
                     .pop()
                     .ok_or(format!("1 operand is needed before '{word}'"))?;
                 let result = operand1 / operand2;
-                println!("\t{operand1} {word} {operand2} = {result}");
+                println!("{operand1} {word} {operand2} = {result}");
                 stack.push(result);
             }
             "%" => {
@@ -68,7 +68,7 @@ where
                     .pop()
                     .ok_or(format!("1 operand is needed before '{word}'"))?;
                 let result = operand1 % operand2;
-                println!("\t{operand1} {word} {operand2} = {result}");
+                println!("{operand1} {word} {operand2} = {result}");
                 stack.push(result);
             }
             _ => {
@@ -95,7 +95,7 @@ fn main() -> rustyline::Result<()> {
         // println!("No previous history.");
     }
 
-    println!("{}", "CODOTAKU RPN 2022".blue());
+    println!("{}", "RPN calculator".blue());
 
     loop {
         let readline = rl.readline(">> ");
@@ -110,14 +110,14 @@ fn main() -> rustyline::Result<()> {
                     "float" => {
                         let result = evaluate::<f64>(expression);
                         match result {
-                            Ok(result) => println!("\t= {result}"),
+                            Ok(result) => println!("{result}"),
                             Err(error_message) => println!("Error: {}", error_message.red()),
                         }
                     }
                     "int" => {
                         let result = evaluate::<i64>(expression);
                         match result {
-                            Ok(result) => println!("\t= {result}"),
+                            Ok(result) => println!("= {result}"),
                             Err(error_message) => println!("Error: {}", error_message.red()),
                         }
                     }
